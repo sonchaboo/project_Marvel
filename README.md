@@ -16,9 +16,9 @@
 В файле features.csv хранятся данные по признакам людей. Сейчас это выглядит следующим образом: первый столбец - имя человека, второй - один из признаков, третий - значение этого признака. В дальнейшем это будет реализовано в виде таблицы объекты-признаки.
 
 После подготовки всех данных мы загрузили файл res.csv в neo4j с помощью запроса:
-LOAD CSV WITH HEADERS FROM 'file:///C:/res.csv' AS line
+```LOAD CSV WITH HEADERS FROM 'file:///C:/res.csv' AS line
 MERGE (n:MyNode {Name:line.first})
 MERGE (m:MyNode {Name:line.second})
-MERGE (n) -[rel:KNOWS]-> (m)
+MERGE (n) -[rel:KNOWS]-> (m)```
 
 И получили следующую визуализацию:
