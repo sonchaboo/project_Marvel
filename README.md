@@ -26,3 +26,4 @@ MERGE (n) -[rel:KNOWS]-> (m)
 
 И получили следующую визуализацию:
 https://ibb.co/mN4zBHW
+![Иллюстрация к проекту](https://ibb.co/mN4zBHW)
