@@ -24,6 +24,5 @@ MERGE (m:MyNode {Name:line.second})
 MERGE (n) -[rel:KNOWS]-> (m)
 ```
 
-И получили следующую визуализацию:
-https://ibb.co/mN4zBHW
+И получили следующую визуализацию (прикладываем фрагмент):
 ![Иллюстрация к проекту](https://github.com/sonchaboo/project_Marvel/blob/master/%D0%90%D0%BD%D0%BD%D0%BE%D1%82%D0%B0%D1%86%D0%B8%D1%8F%202020-03-19%20224127.jpg)
