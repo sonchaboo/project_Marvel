@@ -19,6 +19,7 @@
 ```LOAD CSV WITH HEADERS FROM 'file:///C:/res.csv' AS line
 MERGE (n:MyNode {Name:line.first})
 MERGE (m:MyNode {Name:line.second})
-MERGE (n) -[rel:KNOWS]-> (m)```
+MERGE (n) -[rel:KNOWS]-> (m)
+```
 
 И получили следующую визуализацию:
