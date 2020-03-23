@@ -58,24 +58,48 @@ class MarvelPers(scrapy.Spider):
 
 
     def parse3(self, response):
-            # response.css('.pi-data-label.pi-secondary-font b::text').extract()
-            dct = {}
-            name = response.css('.page-header__title::text').get()
-            # получаю все фичи
-            roles = response.css('.pi-item.pi-data.pi-item-spacing.pi-border-color b::text').extract()
-            for i, name in enumerate(response.css('.pi-data-value.pi-font::text, .pi-data-value.pi-font a::text').extract()):
-                if i <= 4:
-                    dct[roles[i]] = name # name.css('a::text').get()
-            final = []
-            for r in dct.keys():
-                if r == 'Настоящее имя':
-                    n = dct[r]
-                # if r in ('Вид', 'Гражданство', 'Пол', 'Статус'):
-                final.append([r, dct[r]])
-            for i, nm in enumerate(final):
-                yield {
-                    'name': n,
+        name = response.css('[data-source="настоящее имя"] div::text').get()
+        vf = response.css('[data-source="вид"] h3 b::text').get()
+        grf = response.css('[data-source="гражданство"] h3 b::text').get()
+        polf = response.css('[data-source="пол"] h3 b::text').get()
+        stf = response.css('[data-source="статус"] h3 b::text').get()
+        v = response.css('[data-source="вид"] div a::text').get()
+        gr = response.css('[data-source="гражданство"] div a::text').get()
+        pol = response.css('[data-source="пол"] div::text').get()
+        st = response.css('[data-source="статус"] div::text').get()
+        dct = []
+        dct.append([vf, v])
+        dct.append([grf, gr])
+        dct.append([polf, pol])
+        dct.append([stf, st])
+        # dct[vf] = v
+        # dct[grf] = gr
+        # dct[polf] = pol
+        # dct[stf] = st
+        for i, nm in enumerate(dct):
+            yield {
+                    'name': name,
                     'feature': nm[0],
                     'what': nm[1]
                 }
+            # # response.css('.pi-data-label.pi-secondary-font b::text').extract()
+            # dct = {}
+            # name = response.css('.page-header__title::text').get()
+            # # получаю все фичи
+            # roles = response.css('.pi-item.pi-data.pi-item-spacing.pi-border-color b::text').extract()
+            # for i, name in enumerate(response.css('.pi-data-value.pi-font::text, .pi-data-value.pi-font a::text').extract()):
+            #     if i <= 4:
+            #         dct[roles[i]] = name # name.css('a::text').get()
+            # final = []
+            # for r in dct.keys():
+            #     if r == 'Настоящее имя':
+            #         n = dct[r]
+            #     # if r in ('Вид', 'Гражданство', 'Пол', 'Статус'):
+            #     final.append([r, dct[r]])
+            # for i, nm in enumerate(final):
+            #     yield {
+            #         'name': n,
+            #         'feature': nm[0],
+            #         'what': nm[1]
+            #     }
                 
